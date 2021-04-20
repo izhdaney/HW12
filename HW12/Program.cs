@@ -18,10 +18,28 @@ namespace HW12
             Console.WriteLine(arr.Add(6));
             Console.WriteLine(arr.Add(5));
             Console.WriteLine(arr.Add(8));
-            Console.WriteLine(arr.Add("test"));
+            Console.WriteLine(arr.Add(15));           // ADD
+            Console.WriteLine(arr.Add(4));
+            Console.WriteLine(arr.Add(1));
+            Console.WriteLine(arr.Add(256));
 
-            arr.Insert(1, "test");
 
+
+            Console.WriteLine($"Contains - 4 - is {arr.Contains(4)}");             // CONTAINS
+            Console.WriteLine($"Contains - 47 - is {arr.Contains(47)}");
+
+            int[] arr1 = new int[10];
+
+            arr.CopyTo(arr1, 1);           // COPY-TO
+
+            foreach (var el in arr1)
+            {
+                Console.Write($"{el}\t");
+            }
+
+            Console.WriteLine($"\nIndexOf - value 15 - is {arr.IndexOf(15)}");
+
+            arr.Insert(5, 18456);           // INSERT
 
 
             foreach (var o in arr)
@@ -29,95 +47,106 @@ namespace HW12
                 Console.Write("{0}\t", o);
             }
 
-            //int[] vs = new int[9];
-            //Array array = vs;
+            Console.WriteLine();
 
-            //arr.CopyTo(array, 2);
+            arr.Remove(1);              // REMOVE (VALUE)
 
-
-
-            MyArrayList myArrayList = new MyArrayList();
-
-            Console.WriteLine("\n My Collection\n");
-
-            Console.WriteLine(myArrayList.Add(9));
-            Console.WriteLine(myArrayList.Add(8));
-            Console.WriteLine(myArrayList.Add(5));
-            Console.WriteLine(myArrayList.Add(16));
-
-
-
-            int[] myArr = new int[8] { 1, 1, 1, 1, 1, 1, 1, 1 };
-            Array array = myArr;
-
-
-            //myArrayList.CopyTo(array, 2);
-
-
-            //foreach (var el in myArr)
-            //{
-            //    Console.Write($"{el}\t");
-            //}
-
-            //Console.WriteLine();
-
-
-
-
-
-            try
+            foreach (var o in arr)
             {
-                myArrayList.Insert(3, "test");
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                Console.WriteLine("Значение параметра index меньше нуля.- или - Значение index больше значения Count.");
-            }
-            catch (NotSupportedException)
-            {
-                Console.WriteLine("Объект ArrayList доступен только для чтения.- или - ArrayList имеет фиксированный размер.");
-            }
-            finally
-            {
-
+                Console.Write("{0}\t", o);
             }
 
-            foreach (var o in myArrayList)
+            Console.WriteLine();
+
+            arr.RemoveAt(2);
+
+            foreach (var o in arr)
+            {
+                Console.Write("{0}\t", o);
+            }
+
+            Console.WriteLine();
+
+            arr.Sort();
+
+            foreach (var o in arr)
             {
                 Console.Write("{0}\t", o);
             }
 
 
 
-            //foreach (var o in myArrayList)
-            //{
-            //    Console.Write("{0}\t", o);
-            //}
 
-            //foreach (var o in myArrayList)
-            //{
-            //    Console.Write("{0}\t", o);
-            //}
 
-            //Console.WriteLine();
 
-            //myArrayList.SortBubbleHighToLow();
+            MyArrayList myArrayList = new MyArrayList();
 
-            //foreach (var o in myArrayList)
-            //{
-            //    Console.Write("{0}\t", o);
-            //}
+            Console.WriteLine("\n\n My Collection\n");
 
-            //Console.WriteLine();
+            Console.WriteLine(myArrayList.Count);
+            Console.WriteLine(myArrayList.IsFixedSize);
+            Console.WriteLine(myArrayList.IsReadOnly);
+            Console.WriteLine(myArrayList.IsSynchronized);
+            Console.WriteLine(myArrayList.SyncRoot);
 
-            //myArrayList.SortBubbleLowToHigh();
+            Console.WriteLine(myArrayList.Add(6));
+            Console.WriteLine(myArrayList.Add(5));
+            Console.WriteLine(myArrayList.Add(8));
+            Console.WriteLine(myArrayList.Add(15));           // ADD
+            Console.WriteLine(myArrayList.Add(4));
+            Console.WriteLine(myArrayList.Add(1));
+            Console.WriteLine(myArrayList.Add(256));
 
-            //foreach (var o in myArrayList)
-            //{
-            //    Console.Write("{0}\t", o);
-            //}
 
-            //Console.WriteLine();
+
+            Console.WriteLine($"Contains - 4 - is {myArrayList.Contains(4)}");             // CONTAINS
+            Console.WriteLine($"Contains - 47 - is {myArrayList.Contains(47)}");
+
+            int[] arr2 = new int[10];
+
+            myArrayList.CopyTo(arr2, 1);           // COPY-TO
+
+            foreach (var el in arr2)
+            {
+                Console.Write($"{el}\t");
+            }
+
+            Console.WriteLine($"\nIndexOf - value 15 - is {myArrayList.IndexOf(15)}");
+
+            myArrayList.Insert(5, 18456);           // INSERT
+
+
+            foreach (var o in myArrayList)
+            {
+                Console.Write("{0}\t", o);
+            }
+
+            Console.WriteLine();
+
+            myArrayList.Remove(1);              // REMOVE (VALUE)
+
+            foreach (var o in myArrayList)
+            {
+                Console.Write("{0}\t", o);
+            }
+
+            Console.WriteLine();
+
+            myArrayList.RemoveAt(2);
+
+            foreach (var o in myArrayList)
+            {
+                Console.Write("{0}\t", o);
+            }
+
+            Console.WriteLine();
+
+            myArrayList.SortBubbleLowToHigh();
+
+            foreach (var o in myArrayList)
+            {
+                Console.Write("{0}\t", o);
+            }
 
         }
     }

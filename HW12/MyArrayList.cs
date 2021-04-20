@@ -165,7 +165,7 @@ namespace HW12
             {
                 for (int j = i + 1; j < _myarrayList.Length; j++)
                 {
-                    if ((double)_myarrayList[i] > (double)_myarrayList[j])
+                    if ((int)_myarrayList[i] > (int)_myarrayList[j])
                     {
                         temp = _myarrayList[i];
                         _myarrayList[i] = _myarrayList[j];
@@ -246,5 +246,14 @@ namespace HW12
         {
             get { return this; }
         }
+
+        public void PrintArrayList()
+        {
+            foreach (var el in _myarrayList)
+            {
+                Console.Write($"{el}\t");
+            }
+        }
+
     }
 }
