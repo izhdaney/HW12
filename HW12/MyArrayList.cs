@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HW12
 {
-    class MyArrayList : IList
+    class MyArrayList : IList, ISortMyArray
     {
 
         private object[] _myarrayList;
@@ -16,32 +16,45 @@ namespace HW12
         public MyArrayList()
         {
             _myarrayList = new object[0];
-            
         }
 
         public int Add(object value)
         {
-            object[] tmp = new object[_myarrayList.Length + 1];
-            for (int i = 0; i < _myarrayList.Length; i++)
+            if (IsFixedSize && IsReadOnly)
             {
-                tmp[i] = _myarrayList[i];
+                throw new NotSupportedException();
+            }
+            else
+            {
+                object[] tmp = new object[_myarrayList.Length + 1];
+                for (int i = 0; i < _myarrayList.Length; i++)
+                {
+                    tmp[i] = _myarrayList[i];
+                }
+
+                tmp[tmp.Length - 1] = value;
+
+                _myarrayList = tmp;
+
+                return tmp.Length - 1;
             }
 
-            tmp[tmp.Length - 1] = value;
-
-            _myarrayList = tmp;
-
-            return tmp.Length - 1;
         }
 
         public void Clear()
         {
-            _myarrayList = new object[0];
+            if (IsFixedSize && IsReadOnly)
+            {
+                throw new NotSupportedException();
+            }
+            else
+            {
+                _myarrayList = new object[0];
+            }
         }
 
         public bool Contains(object value)
         {
-            
             for (int i = 0; i < _myarrayList.Length; i++)
             {
                 if (_myarrayList[i].Equals(value))
@@ -54,7 +67,33 @@ namespace HW12
 
         public void CopyTo(Array array, int index)
         {
-            throw new NotImplementedException();
+            //for (int i = 0; i < _myarrayList.Length; i++)
+            //{
+            //    array.SetValue(_myarrayList[i], index++);
+            //}
+
+            int[] temp = new int[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                temp[i] = (int)array.GetValue(i);
+            }
+
+            for (int i = 0; i < _myarrayList.Length; i++)
+            {
+                temp[index] = (int)_myarrayList[i];
+                index++;
+            }
+
+            foreach (var el in temp)
+            {
+                Console.Write($"{el}\t");
+            }
+            Console.WriteLine();
+
+            array = temp;
+
+
         }
 
         public IEnumerator GetEnumerator()
@@ -77,7 +116,52 @@ namespace HW12
 
         public void Insert(int index, object value)
         {
-            throw new NotImplementedException();
+            //if ((index < 0) && (index > _myarrayList.Length))
+            //{
+            //    throw new ArgumentOutOfRangeException(); 
+            //}
+            //else if (IsFixedSize && IsReadOnly)
+            //{
+            //    throw new NotSupportedException();
+            //}
+            //else
+            //{
+            //    object[] tmp = new object[_myarrayList.Length + 1];
+
+            //    for (int i = 0; i < index; i++)
+            //    {
+            //        tmp[i] = _myarrayList[i];
+            //    }
+
+            //    tmp[index] = value;
+
+            //    for (int i = index; i < _myarrayList.Length; i++)
+            //    {
+            //        tmp[i + 1] = _myarrayList[i];
+            //    }
+            //    _myarrayList = tmp;
+            //}
+
+            if ((index >= 0) && (index > _myarrayList.Length))
+            {
+                object[] tmp = new object[_myarrayList.Length + 1];
+
+                for (int i = 0; i < index; i++)
+                {
+                    tmp[i] = _myarrayList[i];
+                }
+
+                tmp[index] = value;
+
+                for (int i = index; i < _myarrayList.Length; i++)
+                {
+                    tmp[i + 1] = _myarrayList[i];
+                }
+                _myarrayList = tmp;
+            }
+
+
+
         }
 
         public void Remove(object value)
@@ -101,6 +185,51 @@ namespace HW12
                     tmp[i -1] = _myarrayList[i];
                 }
                 _myarrayList = tmp;
+            }
+        }
+
+        public void SortBubbleLowToHigh()
+        {
+            object temp;
+            for (int i = 0; i < _myarrayList.Length; i++)
+            {
+                for (int j = i + 1; j < _myarrayList.Length; j++)
+                {
+                    if ((int)_myarrayList[i] > (int)_myarrayList[j])
+                    {
+                        temp = _myarrayList[i];
+                        _myarrayList[i] = _myarrayList[j];
+                        _myarrayList[j] = temp;
+                    }
+                }
+            }
+        }
+
+        public void SortBubbleHighToLow()
+        {
+            object temp;
+            for (int i = 0; i < _myarrayList.Length; i++)
+            {
+                for (int j = i + 1; j < _myarrayList.Length; j++)
+                {
+                    if ((int)_myarrayList[i] < (int)_myarrayList[j])
+                    {
+                        temp = _myarrayList[i];
+                        _myarrayList[i] = _myarrayList[j];
+                        _myarrayList[j] = temp;
+                    }
+                }
+            }
+        }
+
+        public void Reverse()
+        {
+            object temp;
+            for (int i = 0; i < _myarrayList.Length / 2; i++)
+            {
+                temp = _myarrayList[i];
+                _myarrayList[i] = _myarrayList[_myarrayList.Length - i - 1];
+                _myarrayList[_myarrayList.Length - i - 1] = temp;
             }
         }
 

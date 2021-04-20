@@ -19,12 +19,20 @@ namespace HW12
             Console.WriteLine(arr.Add(5));
             Console.WriteLine(arr.Add(8));
 
-            arr.RemoveAt(2);
+            
+            arr.Insert(1, "test");
+
+            arr.Reverse();
 
             foreach (var o in arr)
             {
                 Console.Write("{0}\t", o);
             }
+
+            //int[] vs = new int[9];
+            //Array array = vs;
+
+            //arr.CopyTo(array, 2);
 
 
 
@@ -32,51 +40,67 @@ namespace HW12
 
             Console.WriteLine("\n My Collection\n");
 
-            //Console.WriteLine(myArrayList.Count);
-            //Console.WriteLine(myArrayList.IsFixedSize);
-            //Console.WriteLine(myArrayList.IsReadOnly);
-            //Console.WriteLine(myArrayList.IsSynchronized);
-            //Console.WriteLine(myArrayList.SyncRoot);
-
-
-            //Console.WriteLine(myArrayList.Add(6));
-            //Console.WriteLine(myArrayList.Add(5));
-            //Console.WriteLine(myArrayList.Add(8));
-
-
-
-            //Console.WriteLine(myArrayList.GetEnumerator());
-
-            myArrayList.Clear();
-
-            foreach (var o in myArrayList)
-            {
-                Console.Write("{0}\t", o);
-            }
-
-
-            Console.WriteLine(myArrayList.Add(6));
-            Console.WriteLine(myArrayList.Add(5));
+            Console.WriteLine(myArrayList.Add(9));
             Console.WriteLine(myArrayList.Add(8));
+            Console.WriteLine(myArrayList.Add(5));
+            Console.WriteLine(myArrayList.Add(16));
 
-            Console.WriteLine(myArrayList.Contains(5));
 
 
+            int[] myArr = new int[8] { 1, 1, 1, 1, 1, 1, 1, 1 };
+            Array array = myArr;
 
-            Console.WriteLine(myArrayList.IndexOf(6));
 
-            foreach (var o in myArrayList)
+            myArrayList.CopyTo(array, 2);
+
+            myArrayList.Insert(0, "test");
+          
+            foreach (var el in myArr)
             {
-                Console.Write("{0}\t", o);
+                Console.Write($"{el}\t");
             }
 
-            myArrayList.Remove(8);
             Console.WriteLine();
 
+            myArrayList.Insert(0, "test");
+
             foreach (var o in myArrayList)
             {
                 Console.Write("{0}\t", o);
             }
+
+
+
+            //foreach (var o in myArrayList)
+            //{
+            //    Console.Write("{0}\t", o);
+            //}
+
+            //foreach (var o in myArrayList)
+            //{
+            //    Console.Write("{0}\t", o);
+            //}
+
+            //Console.WriteLine();
+
+            //myArrayList.SortBubbleHighToLow();
+
+            //foreach (var o in myArrayList)
+            //{
+            //    Console.Write("{0}\t", o);
+            //}
+
+            //Console.WriteLine();
+
+            //myArrayList.SortBubbleLowToHigh();
+
+            //foreach (var o in myArrayList)
+            //{
+            //    Console.Write("{0}\t", o);
+            //}
+
+            //Console.WriteLine();
+
         }
     }
 }
