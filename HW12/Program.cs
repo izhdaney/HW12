@@ -18,11 +18,11 @@ namespace HW12
             Console.WriteLine(arr.Add(6));
             Console.WriteLine(arr.Add(5));
             Console.WriteLine(arr.Add(8));
+            Console.WriteLine(arr.Add("test"));
 
-            
             arr.Insert(1, "test");
 
-            arr.Reverse();
+
 
             foreach (var o in arr)
             {
@@ -51,18 +51,36 @@ namespace HW12
             Array array = myArr;
 
 
-            myArrayList.CopyTo(array, 2);
+            //myArrayList.CopyTo(array, 2);
 
-            myArrayList.Insert(0, "test");
-          
-            foreach (var el in myArr)
+
+            //foreach (var el in myArr)
+            //{
+            //    Console.Write($"{el}\t");
+            //}
+
+            //Console.WriteLine();
+
+
+
+
+
+            try
             {
-                Console.Write($"{el}\t");
+                myArrayList.Insert(3, "test");
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Значение параметра index меньше нуля.- или - Значение index больше значения Count.");
+            }
+            catch (NotSupportedException)
+            {
+                Console.WriteLine("Объект ArrayList доступен только для чтения.- или - ArrayList имеет фиксированный размер.");
+            }
+            finally
+            {
 
-            Console.WriteLine();
-
-            myArrayList.Insert(0, "test");
+            }
 
             foreach (var o in myArrayList)
             {
