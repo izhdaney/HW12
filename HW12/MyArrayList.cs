@@ -12,10 +12,12 @@ namespace HW12
 
         private object[] _myarrayList;
 
+
         public MyArrayList()
         {
             _myarrayList = new object[0];
-    }
+            
+        }
 
         public int Add(object value)
         {
@@ -39,10 +41,10 @@ namespace HW12
 
         public bool Contains(object value)
         {
-  
-            for (int i = 0; i < Count; i++)
+            
+            for (int i = 0; i < _myarrayList.Length; i++)
             {
-                if (_myarrayList[i] == value)
+                if (_myarrayList[i].Equals(value))
                 {
                     return true;
                 }
@@ -62,9 +64,10 @@ namespace HW12
 
         public int IndexOf(object value)
         {
+            
             for (int i = 0; i < _myarrayList.Length; i++)
             {
-                if (_myarrayList[i] == value)
+                if (_myarrayList[i].Equals(value))
                 {
                     return i;
                 }
@@ -79,12 +82,26 @@ namespace HW12
 
         public void Remove(object value)
         {
-            throw new NotImplementedException();
+            RemoveAt(IndexOf(value));
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            if ((index >= 0) && (index < _myarrayList.Length))
+            {
+                object[] tmp = new object[_myarrayList.Length - 1];
+
+                for (int i = 0; i < index; i++)
+                {
+                    tmp[i] = _myarrayList[i];
+                }
+
+                for (int i = index + 1; i < _myarrayList.Length; i++)
+                {
+                    tmp[i -1] = _myarrayList[i];
+                }
+                _myarrayList = tmp;
+            }
         }
 
         public object this[int index]
